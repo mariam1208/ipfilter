@@ -696,6 +696,9 @@ void fr_authexpire()
 	SPL_NET(s);
 	WRITE_ENTER(&ipf_auth);
 	for (i = 0, fra = fr_auth; i < fr_authsize; i++, fra++) {
+                if(fra == NULL)
+                        break;
+
 		fra->fra_age--;
 		if ((fra->fra_age == 0) && (m = fr_authpkts[i])) {
 			FREE_MB_T(m);

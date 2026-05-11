@@ -622,6 +622,10 @@ int mode;
 		if (!(mode & FWRITE))
 			error = EPERM;
 		else {
+                        /* ipf_cfglock is used to synchronise multiple
+                         * ipfattach and ipldetach across different threads
+                         */  
+	                lockl(&ipf_cfglock, LOCK_SHORT);
 			BCOPYIN(data, &tmp, sizeof(tmp));
 			if (tmp) {
 				if (fr_running > 0)
@@ -637,6 +641,7 @@ int mode;
 				if (error == 0)
 					fr_running = -1;
 			}
+	                unlockl(&ipf_cfglock);
 		}
 		break;
 	case SIOCIPFSET :
