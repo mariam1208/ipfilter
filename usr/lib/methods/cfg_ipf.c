@@ -34,7 +34,6 @@ static char sccsid[] = "@(#)99  1.3  src/ipfl/usr/lib/methods/cfg_ipf.c, ipflt, 
 #include <sys/uio.h>
 #include <sys/time.h>
 #include <sys/socket.h>
-#include <net/if.h>
 #define _TCP_DEBUG_H_
 #include <netinet/in.h>
 #include <netinet/in_systm.h>
@@ -42,6 +41,7 @@ static char sccsid[] = "@(#)99  1.3  src/ipfl/usr/lib/methods/cfg_ipf.c, ipflt, 
 #include <netinet/ip_icmp.h>
 #include <netinet/tcp.h>
 #include <netinet/udp.h>
+#include <net/if.h>
 
 #include <arpa/inet.h>
 
