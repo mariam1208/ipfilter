@@ -1,6 +1,6 @@
 SUBDIRS = usr/lib usr/sbin usr/lib/methods kernext
 
-all: kernext/sys/socketvar.h
+all: kernext/sys/socketvar.h kernext/sys/ioctl.h
 	touch kernext/sys/libsysp.h
 	for i in $(SUBDIRS); do \
 		(cd $$i && $(MAKE) $(MAKEFLAGS)); \
@@ -26,3 +26,7 @@ clean:
 kernext/sys/socketvar.h: /usr/include/sys/socketvar.h
 	mkdir -p kernext/sys
 	sed "s#free_sock_hash_table\[\]#*free_sock_hash_table#g" $^ > $@
+
+kernext/sys/ioctl.h: /usr/include/sys/ioctl.h
+	mkdir -p kernext/sys
+	sed "s#(0x40000000<<1)#(0x80000000)#" $^ | sed "s#((sizeof(t)\&IOCPARM_MASK)#(int)((sizeof(t)\&IOCPARM_MASK)#g" > $@
