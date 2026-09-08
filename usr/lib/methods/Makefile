@@ -19,7 +19,7 @@
 MAKETOP=../../..
 CC = gcc
 INCFLAGS = -I${MAKETOP}/kernext -I${MAKETOP}/kernext/netinet
-CFLAGS = -D_ALL_SOURCE -D_KERNEL -D_AIX -D_AIX51 -DAIX -O2 -maix64 ${INCFLAGS}
+CFLAGS = -D_ALL_SOURCE -D_AIX -D_AIX51 -DAIX -O2 -maix64 ${INCFLAGS}
 LIBS = -lodm -lcfg -lrts
 
 cfg_ipf: cfg_ipf.c

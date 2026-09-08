@@ -37,7 +37,7 @@ fil.o:  fil.c
 	${CC} -maix64 ${CFLAGS} -DIPF_DEFAULT_PASS=FR_PASS -c $< -o $@
 
 ip_state.o: ip_state.c
-	${CC} -maix64 ${CFLAGS} -DIPSTATE_SIZE=241271 -c $< -o $@
+	${CC} -maix64 ${CFLAGS} -DIPSTATE_SIZE=249989 -DIPSTATE_MAX=1000000 -DIPSTATE_MAXBUCKET=256 -c $< -o $@
 
 ip_pool.o: ip_pool.c
 	${CC} ${CFLAGS} ${FIXRADIX} -maix64 -c $< -o $@
